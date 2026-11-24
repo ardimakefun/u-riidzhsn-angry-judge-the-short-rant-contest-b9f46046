@@ -9,5 +9,10 @@ if (N < 1 || N > 400 || RANT.trim().length === 0) {
   process.exit(1);
 }
 
+if (RANT.includes("\n")) {
+  console.error("entry must be a single line (no newline characters)");
+  process.exit(1);
+}
+
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", RANT, "utf8");
